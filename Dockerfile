@@ -1,12 +1,12 @@
-FROM node:9.2.0-alpine
+FROM node:16.10.0-alpine
 
 LABEL authors="Alejandro Such <alejandro.such@gmail.com> , Mihai Bob <mihai.m.bob@gmail.com>"
 
 RUN apk update \
-  && apk add --update alpine-sdk python \
-  && yarn global add @angular/cli@1.5.5 \
-  && ng set --global packageManager=yarn \
-  && apk del alpine-sdk python \
+  && apk add --update alpine-sdk python3 \
+  && yarn global add @angular/cli@12.2.8 \
+  && ng config --global cli.packageManager yarn \
+  && apk del alpine-sdk python3 \
   && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
   && npm cache clean --force \
   && yarn cache clean \
