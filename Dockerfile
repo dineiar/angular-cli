@@ -12,4 +12,9 @@ RUN apk update \
   && yarn cache clean \
   && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
 
+EXPOSE 4200
+
+# Replaces default node entrypoint, which forces "node" command by default
+COPY docker-entrypoint.sh /usr/local/bin/
+
 CMD [ "ng" ]
