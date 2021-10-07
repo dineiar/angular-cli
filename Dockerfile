@@ -1,4 +1,4 @@
-FROM node:16.10.0-alpine
+FROM node:14.18.0-alpine
 
 LABEL authors="Alejandro Such <alejandro.such@gmail.com> , Mihai Bob <mihai.m.bob@gmail.com>"
 
@@ -11,3 +11,5 @@ RUN apk update \
   && npm cache clean --force \
   && yarn cache clean \
   && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+
+CMD [ "ng" ]
